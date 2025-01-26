@@ -66,3 +66,37 @@ console.log(`El número entero aleatorio entre 1 y 10 es: ${numeroEnt10}`);
 // Genera un número entero aleatorio entre 1 y 1000 y lo muestra en la consola
 let numeroEnt1000 = Math.floor(Math.random() * 1000) + 1;
 console.log(`El número entero aleatorio entre 1 y 1000 es: ${numeroEnt1000}`);
+
+//Juego de adivinar el número con selección de máximo definido por usuario
+let numeroMaxPosible = parseInt(prompt('Ingrese el número máximo posible para el juego: '));
+let numeroSecreto = Math.floor(Math.random() * numeroMaxPosible) + 1;
+let numeroIngresado = 0;
+let intentos = 1;
+//let palabraVeces = 'vez'; esto se reemplaza por el operador ternario que se encuentra en la línea 174
+let maxIntentos = 5;
+console.log(numeroSecreto);
+
+while (numeroSecreto != numeroIngresado) {
+    numeroIngresado = parseInt(prompt(`Adivina el número secreto. Ingresa un número del 1 al ${numeroMaxPosible}`));
+
+    //console.log (typeof(numeroIngresado)); para mostar el tipo de dato
+    console.log (numeroIngresado);
+
+    if (numeroIngresado == numeroSecreto) {
+        alert(`¡Adivinaste, el número era: ${numeroIngresado}!, Lo intentaste ${intentos} ${intentos == 1 ? 'vez' : 'veces'}`);
+    } else {
+        if (numeroIngresado > numeroSecreto) {
+            alert('El número secreto es menor.');
+        } else {
+            alert('El número secreto es mayor.');
+        }
+        //intentos = intentos + 1;
+        //intentos += 1;
+        intentos++; //este es lo mismo que intentos += 1 y que intentos = intentos + 1
+        //palabraVeces = 'veces'; esto se reemplaza por el operador ternario que se encuentra en la línea 174
+        if (intentos > maxIntentos) {
+            alert(`Llegaste al número máximo de ${maxIntentos} intentos permitidos.`);
+            break;
+        }        
+    }
+}
